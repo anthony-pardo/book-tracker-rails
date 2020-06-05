@@ -8,5 +8,7 @@ class User < ApplicationRecord
   has_many :books, through: :reviews 
   has_many :genres, through: :books 
   has_many :comments
+
+  devise :omniauthable, omniauth_providers: %i[github]
          
 end
