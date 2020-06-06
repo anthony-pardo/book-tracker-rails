@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.1'
 
 
+gem 'pry'
 gem 'devise'
 gem 'omniauth-github'
 gem 'bootstrap-sass'
