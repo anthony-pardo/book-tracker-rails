@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  resources :genres
-  #devise_for :users
   devise_for :users, controllers: {
         registrations: 'registrations',
         omniauth_callbacks: 'users/omniauth_callbacks'
@@ -26,5 +24,8 @@ Rails.application.routes.draw do
     resources :reviews
     resources :comments
   end
+  resources :genres
+  resources :books
+  resources :reviews
 
 end

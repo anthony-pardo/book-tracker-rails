@@ -1,0 +1,8 @@
+<% if flash[:alert] %>
+  <p>Book not found</p>
+<% end %>
+<ul>
+<% @books.each do |book| %>
+  <li><%= link_to book.title, book_path(book) %></li>
+<% end %>
+</ul>
