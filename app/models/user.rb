@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  validates :name, uniqueness: true
+  validates :email, uniqueness: true
+  validates :name, presence: true
+  validates :password, presence: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -8,6 +12,7 @@ class User < ApplicationRecord
   has_many :books, through: :reviews 
   has_many :genres, through: :books 
   has_many :comments
+  
 
   devise :omniauthable, omniauth_providers: %i[github]
 
