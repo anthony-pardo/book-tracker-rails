@@ -31,4 +31,10 @@ class BooksController < ApplicationController
       @book = Book.new(user_id: params[:user_id])
     end
   end
+
+  private
+
+  def book_params
+    params.require(:book).permit(:title, :user_name, :user_id)
+  end
 end
