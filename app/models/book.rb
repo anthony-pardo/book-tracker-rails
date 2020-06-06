@@ -11,6 +11,6 @@ class Book < ApplicationRecord
 
   def user_name=(name)
     user = User.find_or_create_by(name: name)
-    self.user = user
+    self.users << user
   end
 end

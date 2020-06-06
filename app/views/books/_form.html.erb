@@ -1,10 +1,10 @@
 <%= form_for @book  do |f| %>
-  <%= artist_select(@book, @isNested) %>
+  <%= user_select(@book, @isNested) %>
   <br>
   <%= f.label :title %>
   <%= f.text_field :title %><br>
-  <%= f.label :user_name %>
-  <%= f.text_field :user_name %>
+  #<%= f.label :user_name %>
+  #<%= f.text_field :user_name %>
   <br />
 
   <%= f.submit %>
