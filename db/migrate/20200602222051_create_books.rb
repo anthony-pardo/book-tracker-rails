@@ -4,8 +4,10 @@ class CreateBooks < ActiveRecord::Migration[6.0]
       t.string :title
       t.string :summary
       t.string :image_url
-      t.integer :user_id
-      t.integer :genre_id
+      t.belongs_to :user, index: true
+      t.belongs_to :genre, index: true
+      #t.integer :user_id
+      #t.integer :genre_id
 
       t.timestamps
     end

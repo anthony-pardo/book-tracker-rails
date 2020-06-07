@@ -13,4 +13,5 @@ class Book < ApplicationRecord
     user = User.find_or_create_by(name: name)
     self.users << user
   end
+
 end

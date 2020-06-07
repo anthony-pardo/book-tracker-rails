@@ -34,7 +34,10 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
+    
     if @book.save
+      @user = User.find(params[:book][:user_id])
+      @book.users << @user
       redirect_to @book
     else
       binding.pry
