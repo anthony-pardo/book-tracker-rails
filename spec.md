@@ -15,7 +15,7 @@ Specs:
 - [x] Include third party signup/login (how e.g. Devise/OmniAuth) - implemented with Devise/OmniAuth-Github
 - [x] Include nested resource show or index (URL e.g. users/2/recipes) - users/1/books implemented
 - [x] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new) - users/1/books/new form implemented
-- [ ] Include form display of validation errors (form URL e.g. /recipes/new)
+- [x] Include form display of validation errors (form URL e.g. /recipes/new) - form validation errors to form URL /users/1/books/new
 
 Confirm:
 - [ ] The application is pretty DRY
