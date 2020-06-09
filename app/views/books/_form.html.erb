@@ -1,16 +1,16 @@
-<%= form_for @book  do |f| %>
+<%= form_for book  do |f| %>
   <%= f.hidden_field :user_id %>
-  <% if @book.errors.any? %>
+  <% if book.errors.any? %>
     <div id="error_explanation">
       <h2>There were some errors:</h2>
       <ul>
-        <% @book.errors.full_messages.each do |message| %>
+        <% book.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
-  <div class="field<%= ' field_with_errors' if @book.errors[:title].any? %>">
+  <div class="field<%= ' field_with_errors' if book.errors[:title].any? %>">
     <%= f.label :title %>
     <%= f.text_field :title %><br>
   </div>
