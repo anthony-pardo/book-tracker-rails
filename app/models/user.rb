@@ -28,5 +28,12 @@ class User < ApplicationRecord
       #user.skip_confirmation!
     end
   end
+
+  scope :most_books, -> { 
+    select("users.id, count(books.id) AS books_count").
+    joins(:books).
+    group("users.id").
+    order("books_count DESC").
+    limit(1) }
          
 end
