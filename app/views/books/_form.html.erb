@@ -10,8 +10,8 @@
       </ul>
     </div>
   <% end %>
-  <div class="field<%= ' field_with_errors' if book.errors[:title].any? %>">
     <%= f.label :title %>
+  <div class="field<%= ' field_with_errors' if book.errors[:title].any? %>">
     <%= f.text_field :title %><br>
   </div>
   <br />

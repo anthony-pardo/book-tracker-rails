@@ -36,12 +36,12 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
     
     if @book.save
-      @user = User.find(params[:book][:user_id])
-      @book.users << @user
+      if params[:book][:user_id] != ""
+        @user = User.find(params[:book][:user_id])
+        @book.users << @user
+      end
       redirect_to @book
     else
-      binding.pry
-
       render :new
     end
   end
