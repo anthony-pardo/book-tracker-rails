@@ -21,7 +21,6 @@ Rails.application.routes.draw do
   resources :users do
     resources :books
     resources :reviews
-    resources :comments
   end
   get 'users/most_books', to: 'users#most_books', as: 'user_most_books'
   
