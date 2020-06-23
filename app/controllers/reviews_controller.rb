@@ -27,14 +27,12 @@ class ReviewsController < ApplicationController
   def new
     if params[:user_id] && !User.exists?(params[:user_id])
       redirect_to users_path, alert: "User not found."
-    else
-      if !params[:user_id]
-        @review = Review.new()
-      elsif current_user == User.find(params[:user_id])
-        @review = Review.new(user_id: params[:user_id])
-      else 
-        redirect_to root_path
-      end
+    elsif params[:book_id] && !Book.exists?(params[:book_id])
+      redirect_to books_path, alert: "Book not found."
+    elsif params[:user_id] && current_user == User.find(params[:user_id])
+      @review = Review.new(user_id: params[:user_id])
+    elsif params[:book_id]
+      @review = Review.new(book_id: params[:book_id])
     end
   end
 
@@ -42,7 +40,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     
     if @review.save
-      redirect_to @review
+      redirect_to user_review_path(@review)
     else
       render :new
     end
