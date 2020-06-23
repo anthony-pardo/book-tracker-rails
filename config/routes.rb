@@ -19,15 +19,12 @@ Rails.application.routes.draw do
   root to: "home#index"
     
   resources :users do
-    resources :genres
     resources :books
     resources :reviews
     resources :comments
   end
   get 'users/most_books', to: 'users#most_books', as: 'user_most_books'
   
-  resources :genres
   resources :books
-  resources :reviews
 
 end
