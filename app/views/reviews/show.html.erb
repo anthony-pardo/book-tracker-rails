@@ -1,3 +1,4 @@
 <h3>Review for <%= @review.book.title %></h3>
 <p><%= @review.content %></p>
 <p><%= @review.rating %>/5 Rating</p>
+<%= link_to "User's profile", user_path(@review.user) %>

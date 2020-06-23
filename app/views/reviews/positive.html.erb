@@ -1,0 +1,6 @@
+<h4>Positive Reviews</h4>
+<ul>
+<% @reviews.each do |r| %>
+  <li><%= link_to "#{r.book.title} with rating of #{r.rating}/5", review_path(r) %></li>
+<% end %>
+</ul>

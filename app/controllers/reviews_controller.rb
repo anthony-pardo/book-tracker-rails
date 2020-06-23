@@ -62,6 +62,14 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def positive 
+    @reviews = Review.positive
+  end
+
+  def negative 
+    @reviews = Review.negative
+  end
+
   private
 
   def review_params

@@ -14,4 +14,8 @@ class Review < ApplicationRecord
       self.book = book
     end
   end
+
+  scope :positive, -> { where("rating > ?", 3)  }
+
+  scope :negative, -> { where("rating < ?", 4)  }
 end
