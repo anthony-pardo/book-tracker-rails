@@ -1,4 +1,6 @@
 class BooksController < ApplicationController
+  before_action :authenticate_user!, except: [:show]
+
   def index
     if params[:user_id]
       @user = User.find_by(id: params[:user_id])
