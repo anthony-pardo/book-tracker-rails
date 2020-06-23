@@ -49,6 +49,8 @@ class ReviewsController < ApplicationController
     elsif params[:book_id]
       @review = Review.new(book_id: params[:book_id])
       @book = Book.find_by(id: params[:book_id])
+    else 
+      @review = Review.new 
     end
   end
 
