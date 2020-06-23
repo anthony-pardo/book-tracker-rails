@@ -4,7 +4,7 @@ class Review < ApplicationRecord
   has_many :comments
   
   validates :rating, presence: true
-  validates :rating, inclusion: => 1..5
+  validates :rating, inclusion: { in: 1..5 }
 
 
 end

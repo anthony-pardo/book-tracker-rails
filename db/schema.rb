@@ -16,12 +16,8 @@ ActiveRecord::Schema.define(version: 2020_06_05_201554) do
     t.string "title"
     t.string "summary"
     t.string "image_url"
-    t.integer "user_id"
-    t.integer "genre_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["genre_id"], name: "index_books_on_genre_id"
-    t.index ["user_id"], name: "index_books_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -32,16 +28,6 @@ ActiveRecord::Schema.define(version: 2020_06_05_201554) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["review_id"], name: "index_comments_on_review_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
-  end
-
-  create_table "genres", force: :cascade do |t|
-    t.string "name"
-    t.integer "user_id"
-    t.integer "book_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["book_id"], name: "index_genres_on_book_id"
-    t.index ["user_id"], name: "index_genres_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
