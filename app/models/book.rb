@@ -4,15 +4,6 @@ class Book < ApplicationRecord
 
   validates :title, presence: true
 
-  def user_name
-    self.try(:user).try(:name)
-  end
-
-  def user_name=(name)
-    user = User.find_or_create_by(name: name)
-    self.users << user
-  end
-
   scope :most_reviews, -> { 
     select("books.id, count(reviews.id) AS reviews_count").
     joins(:reviews).

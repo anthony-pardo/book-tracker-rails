@@ -20,16 +20,6 @@ ActiveRecord::Schema.define(version: 2020_06_05_201554) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.string "content"
-    t.integer "user_id"
-    t.integer "review_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["review_id"], name: "index_comments_on_review_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
-  end
-
   create_table "reviews", force: :cascade do |t|
     t.string "content"
     t.integer "rating"

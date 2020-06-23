@@ -9,6 +9,13 @@ class ReviewsController < ApplicationController
       else
         @reviews = @user.reviews
       end
+    elsif params[:book_id]
+      @book = Book.find_by(id: params[:book_id])
+      if @book.nil?
+        redirect_to books_path, alert: "Book not found"
+      else
+        @reviews = @book.reviews
+      end
     else 
       @reviews = Review.all
     end
@@ -20,6 +27,12 @@ class ReviewsController < ApplicationController
       @review = @user.reviews.find_by(id: params[:id])
       if @review.nil?
         redirect_to user_reviews_path(@user), alert: "Review not found"
+      end
+    elsif params[:book_id]
+      @book = Book.find_by(id: params[:book_id])
+      @review = @book.reviews.find_by(id: params[:id])
+      if @review.nil?
+        redirect_to book_reviews_path(@book), alert: "Review not found"
       end
     else
       @review = Review.find(params[:id])
@@ -35,6 +48,7 @@ class ReviewsController < ApplicationController
       @review = Review.new(user_id: params[:user_id])
     elsif params[:book_id]
       @review = Review.new(book_id: params[:book_id])
+      @book = Book.find_by(id: params[:book_id])
     end
   end
 
@@ -42,7 +56,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     
     if @review.save
-      redirect_to user_review_path(@review)
+      redirect_to review_path(@review)
     else
       render :new
     end
@@ -51,6 +65,6 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:content, :rating, :user_id, :book_id)
+    params.require(:review).permit(:content, :rating, :user_id, :book_id, book_attributes: [:title])
   end
 end

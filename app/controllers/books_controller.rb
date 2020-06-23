@@ -7,7 +7,7 @@ class BooksController < ApplicationController
       if @user.nil?
         redirect_to users_path, alert: "User not found"
       else
-        @books = @user.books
+        @books = @user.books.uniq
       end
     else
       @books = Book.all

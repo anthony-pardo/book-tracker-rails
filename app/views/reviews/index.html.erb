@@ -6,3 +6,4 @@
   <li><%= link_to "#{review.book.title}'s review", review_path(review) %></li>
 <% end %>
 </ul>
+<%= link_to "Add a new review", new_user_review_path(current_user) %>

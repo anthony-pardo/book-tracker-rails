@@ -1,5 +1,6 @@
 <%= form_for review  do |f| %>
-  <%= f.hidden_field :user_id %>
+  <%= f.hidden_field :user_id, :value => user.id %>
+  <%= f.hidden_field :book_id %>
   <% if review.errors.any? %>
     <div id="error_explanation">
       <h2>There were some errors:</h2>
@@ -9,6 +10,15 @@
         <% end %>
       </ul>
     </div>
+  <% end %>
+  <% if !book.nil? %> 
+    <h4>Review for <%= book.title %></h4>
+  <% else %>
+    <%= f.fields_for :book, review.build_book do |book_fields| %>
+      <%= f.label :title %>
+      <%= book_fields.text_field :title %>
+    <% end %>
+    <br><br>
   <% end %>
   <%= f.label :content %>
   <div class="field<%= ' field_with_errors' if review.errors[:content].any? %>">
