@@ -28,7 +28,9 @@ class BooksController < ApplicationController
     if params[:user_id] && !User.exists?(params[:user_id])
       redirect_to users_path, alert: "User not found."
     else
-      if current_user == User.find(params[:user_id])
+      if !params[:user_id]
+        @book = Book.new()
+      elsif current_user == User.find(params[:user_id])
         @book = Book.new(user_id: params[:user_id])
       else 
         redirect_to root_path
