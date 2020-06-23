@@ -4,8 +4,6 @@ class CreateComments < ActiveRecord::Migration[6.0]
       t.string :content
       t.belongs_to :user, index: true
       t.belongs_to :review, index: true
-      #t.integer :user_id
-      #t.integer :review_id
 
       t.timestamps
     end

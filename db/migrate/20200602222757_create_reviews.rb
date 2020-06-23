@@ -5,8 +5,6 @@ class CreateReviews < ActiveRecord::Migration[6.0]
       t.integer :rating
       t.belongs_to :book, index: true
       t.belongs_to :user, index: true
-      #t.integer :book_id
-      #t.integer :user_id
 
       t.timestamps
     end
