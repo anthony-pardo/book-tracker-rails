@@ -1,6 +1,7 @@
 <% if @user %>
   <h1>Welcome !</h1>
   <p><%= @user %></p>
+  <%= link_to "Add a new review", new_user_review_path(current_user) %>
 <% else %>
   <%= link_to "Sign in with Github", user_github_omniauth_authorize_path %>
 <% end %>
