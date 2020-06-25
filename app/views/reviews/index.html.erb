@@ -2,8 +2,13 @@
   <p>Review not found</p>
 <% end %>
 <ul>
+<% if current_user == @user %>
+  <h2>My reviews:</h2>
+<% end %>
 <% @reviews.each do |review| %>
-  <li><%= link_to "#{review.book.title}'s review", review_path(review) %></li>
+  <li><%= link_to "#{review.book.title}'s review by #{review.user.email}", review_path(review) %></li>
 <% end %>
 </ul>
-<%= link_to "Add a new review", new_user_review_path(current_user) %>
+<% if current_user == @user %>
+  <%= link_to "Add a new review", new_user_review_path(current_user) %>
+<% end %>

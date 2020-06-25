@@ -6,6 +6,7 @@ class Review < ApplicationRecord
   
   validates :rating, presence: true
   validates :rating, inclusion: { in: 1..5 }
+  validate :user_cant_review_same_book
 
 
   def book_attributes=(book_attributes)
@@ -18,4 +19,12 @@ class Review < ApplicationRecord
   scope :positive, -> { where("rating > ?", 3)  }
 
   scope :negative, -> { where("rating < ?", 4)  }
+
+  private
+
+  def user_cant_review_same_book
+    if self.user.books.include?(self.book)
+      self.errors[:base] << "You cannot review the same book twice!"
+    end
+  end
 end
